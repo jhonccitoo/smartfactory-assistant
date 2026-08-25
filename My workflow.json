@@ -1,0 +1,67 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "asistente",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "86904fc1-e719-43ed-b780-eab703409119",
+      "name": "Webhook",
+      "webhookId": "8f033708-244a-46f9-904f-5670b355f856"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8000/preguntar",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n       \"consulta\": \"{{ $json.body.consulta }}\"\n     }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "02f45028-8f80-4354-ac99-f27a1ce6d8e7",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "af49b522-ca25-421a-b2e1-2bebac4615dd",
+  "meta": {
+    "instanceId": "9beb9d433f24693643e59d2cd29ccda161886e1cddc207c698e7396349dc46df"
+  },
+  "nodeGroups": [],
+  "id": "dfOk8mVRlNPx4nJH",
+  "tags": []
+}
